@@ -23,7 +23,6 @@ def calculate_tier(base: int, stat_value: int, formula_mode: int) -> Tuple[int, 
             value = tier
         else:
             raise ValueError("Invalid formula mode")
-        print("value", value)
 
         if value == stat_value:
             return tier, value
