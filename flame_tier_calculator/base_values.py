@@ -16,7 +16,7 @@ INDIVIDUAL_BASE_BY_LEVEL = [
     (160, 179, 9),
     (180, 199, 10),
     (200, 229, 11),
-    (290, 300, 12),
+    (230, 300, 12),
 ]
 
 # Base values for Double Stats
