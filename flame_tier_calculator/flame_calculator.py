@@ -2,9 +2,9 @@
 Provides logic to calculate flame tiers and values based on equipment level and bonus types.
 """
 
-from bonus_type import BonusType
-from base_values import INDIVIDUAL_BASE_BY_LEVEL, DOUBLE_BASE_BY_LEVEL, HP_MP_BASE_BY_LEVEL, DEF_BASE_BY_LEVEL
-from stat_calculator import calculate_tier
+from flame_tier_calculator.bonus_type import BonusType
+from flame_tier_calculator.base_values import INDIVIDUAL_BASE_BY_LEVEL, DOUBLE_BASE_BY_LEVEL, HP_MP_BASE_BY_LEVEL, DEF_BASE_BY_LEVEL
+from flame_tier_calculator.stat_calculator import calculate_tier
 import bisect
 from typing import Union, Tuple, Callable, Dict
 
