@@ -1,18 +1,8 @@
-import logging
 from typing import List, Dict, Optional
 from collections import defaultdict
 from dataclasses import dataclass
-from flame_calculator import FlameCalculator
-from bonus_type import BonusType
-
-# Configuração do logger
-logging.basicConfig(
-    filename="flame_solver_log.txt",
-    level=logging.DEBUG,
-    format="%(asctime)s - %(message)s",
-    encoding="utf-8"
-)
-logger = logging.getLogger("flame_solver")
+from flame_tier_calculator.flame_calculator import FlameCalculator
+from flame_tier_calculator.bonus_type import BonusType
 
 
 @dataclass
@@ -82,12 +72,6 @@ class GlobalFlameSolver:
                 for tier in range(tier_max, tier_min - 1, -1)
             ]
 
-        if self.debug:
-            logger.debug("=== GENERATED LINE GROUPS ===")
-            for key, group in lines_by_group.items():
-                for line in group:
-                    logger.debug(line)
-
         return lines_by_group
 
     def solve(self, target_stats: Dict[str, int]) -> Optional[List[List[FlameLine]]]:
@@ -102,8 +86,6 @@ class GlobalFlameSolver:
         tier_groups = [(4, 7), (3, 6), (1, 4)]
 
         for tier_min, tier_max in tier_groups:
-            if self.debug:
-                logger.debug(f"\n=== Trying tier group {tier_min}-{tier_max} ===")
 
             fixed_lines: List[FlameLine] = []
             current_totals: Dict[str, int] = {}
@@ -137,10 +119,6 @@ class GlobalFlameSolver:
                 if len(path) == flexible_slots:
                     # Check if totals match target
                     if all(totals.get(stat, 0) == target for stat, target in target_stats.items()):
-                        if self.debug:
-                            logger.debug("=== FOUND VALID SOLUTION ===")
-                            for line in path:
-                                logger.debug(line)
 
                         solutions.append(fixed_lines + path.copy())
                     return

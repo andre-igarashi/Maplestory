@@ -1,5 +1,5 @@
 from typing import Dict, List, Any
-from global_flame_solver import GlobalFlameSolver
+from flame_tier_calculator.global_flame_solver import GlobalFlameSolver
 
 class FlameAnalyzer:
     """
